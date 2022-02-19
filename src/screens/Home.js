@@ -3,17 +3,12 @@ import { Footer, Header, Layout, MainSection } from "../layouts";
 import { AppContext } from "../store";
 import { CopyGrid, Menu, Lorem } from "../components";
 import { getFont, baseUrl } from "../api";
-import { createGlobalStyle } from "styled-components";
 
 import _ from "lodash";
 
-let FontThem = createGlobalStyle`
-  
-`;
-
 function Home() {
   const { states, setContext } = useContext(AppContext);
-  const { listFonts, fontSelect, tagCopy, families } = states;
+  const { listFonts, tagCopy, families } = states;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -23,30 +18,6 @@ function Home() {
     getFont(name)
       .then((res) => {
         setContext("tagCopy", `${baseUrl}/fonts?font=${name}`);
-        console.log(`${baseUrl}/fonts?font=${name}`, "AHHH", res.data);
-        FontThem = createGlobalStyle`
-        @import url(${baseUrl}/fonts?font=${name});
-        body{
-          ${res.data}
-        }
-          
-        `;
-        // const fontObj = {
-        //   typography: {
-        //     fontFamily: families.join(","),
-        //   },
-        //   components: {
-        //     MuiCssBaseline: {
-        //       styleOverrides: res.data,
-        //     },
-        //   },
-        // };
-        // let arr = {
-        //   ...theme,
-        //   ...fontObj,
-        // };
-        // setContext("fontStyles", arr);
-        // setContext("tagCopy", `${baseUrl}/fonts?font=${name}`);
       })
       .catch((err) => console.log(err));
   };
@@ -56,11 +27,9 @@ function Home() {
       <Layout>
         <Header />
         <MainSection>
-          <FontThem />
           <Menu
             selectList={listFonts}
             setValue={(item, name) => {
-              console.log(item);
               setContext("families", item);
               getFontApi(name);
             }}

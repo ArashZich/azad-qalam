@@ -5,7 +5,6 @@ const AppContext = createContext();
 const initialState = {
   listFonts: [],
   fontStyles: {},
-  fontSelect: "",
   tagCopy: "",
   families: [""],
 };

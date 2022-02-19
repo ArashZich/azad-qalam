@@ -10,6 +10,7 @@ const WrapperContent = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding-top: 10px;
+  padding-bottom: 20px;
 `;
 
 const MainSection = ({ children }) => {

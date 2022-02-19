@@ -36,7 +36,6 @@ export default function Lorem(props) {
   return (
     <Container>
       {list.map((item, ind) => {
-        console.log(item, "ITEM");
         return (
           <Wrapper key={ind}>
             <TextStyle>{item}</TextStyle>
