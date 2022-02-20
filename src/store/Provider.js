@@ -1,5 +1,6 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import { getAllFonts } from "../api";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const AppContext = createContext();
 const initialState = {
@@ -13,7 +14,7 @@ const reducer = (prevState, updatedProperty) => ({
   ...prevState,
   ...updatedProperty,
 });
-
+const helmetContext = {};
 function AppProvider({ children }) {
   const [states, dispatch] = useReducer(reducer, initialState);
 
@@ -39,6 +40,7 @@ function AppProvider({ children }) {
 
   useEffect(() => {
     getListFonts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -49,6 +51,11 @@ function AppProvider({ children }) {
         getListFonts,
       }}
     >
+      <HelmetProvider context={helmetContext}>
+        <Helmet>
+          <link rel="stylesheet" type="text/css" href={states.tagCopy} />
+        </Helmet>
+      </HelmetProvider>
       {children}
     </AppContext.Provider>
   );

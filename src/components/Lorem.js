@@ -32,13 +32,13 @@ const Wrapper = styled.div`
 
 export default function Lorem(props) {
   const { list } = props;
+  let unique = [...new Set(list)];
 
   return (
     <Container>
-      {list.map((item, ind) => {
+      {unique.map((item, ind) => {
         return (
           <Wrapper key={ind}>
-            <TextStyle>{item}</TextStyle>
             <TextStyle fontFamily={item} align="justify">
               {lorem}
             </TextStyle>
