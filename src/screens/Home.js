@@ -1,12 +1,20 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Footer, Header, Layout, MainSection } from "../layouts";
 import { AppContext } from "../store";
-import { CopyGrid, Menu, Lorem } from "../components";
+import {
+  CopyLink,
+  Lorem,
+  Modal,
+  GridItem,
+  Slider,
+  DropDownMenu,
+} from "../components";
 import { getFont, baseUrl } from "../api";
 
 import _ from "lodash";
 
 function Home() {
+  const [active, setActive] = useState(false);
   const { states, setContext } = useContext(AppContext);
   const { listFonts, tagCopy, families } = states;
 
@@ -27,18 +35,29 @@ function Home() {
       <Layout>
         <Header />
         <MainSection>
-          <Menu
-            selectList={listFonts}
-            setValue={(item, name) => {
-              setContext("families", item);
-              getFontApi(name);
-            }}
-          />
+          <Modal
+            title="انتخاب فونت"
+            active={active}
+            hideModal={() => setActive(false)}
+            showModal={() => setActive(true)}
+          >
+            <GridItem
+              list={listFonts}
+              onClick={(item, name) => {
+                setContext("families", item);
+                getFontApi(name);
+                setActive(false);
+              }}
+            />
+          </Modal>
+
           {_.isEmpty(tagCopy) ? null : (
-            <CopyGrid
+            <CopyLink
               link={`<link rel="stylesheet" type="text/css" href="${tagCopy}" />`}
             />
           )}
+          <Slider />
+          <DropDownMenu />
           <Lorem list={families} />
         </MainSection>
         <Footer />

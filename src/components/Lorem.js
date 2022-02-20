@@ -18,16 +18,20 @@ const TextStyle = styled.div`
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 60%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 `;
 
 const Wrapper = styled.div`
-  padding-top: 3rem;
-  padding-left: 10rem;
-  padding-right: 10rem;
+  margin-top: 1.5rem;
+  padding: 2rem;
   direction: rtl;
+  border: 2px solid grey;
+  border-radius: 10px;
+  box-shadow: 2px 5px 5px grey;
 `;
 
 export default function Lorem(props) {

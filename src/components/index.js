@@ -1,7 +1,19 @@
 import Text from "./Text";
 import Copyright from "./Copyright";
-import Menu from "./Menu";
-import CopyGrid from "./CopyGrid";
+import CopyLink from "./CopyLink";
 import Lorem from "./Lorem";
+import Modal from "./Modal";
+import GridItem from "./GridItem";
+import Slider from "./Slider";
+import DropDownMenu from "./DropDownMenu";
 
-export { Text, Copyright, Menu, CopyGrid, Lorem };
+export {
+  Text,
+  Copyright,
+  CopyLink,
+  Lorem,
+  Modal,
+  GridItem,
+  Slider,
+  DropDownMenu,
+};
