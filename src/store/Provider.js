@@ -8,6 +8,9 @@ const initialState = {
   fontStyles: {},
   tagCopy: "",
   families: [""],
+  fontWeight: 400,
+  fontSize: 20,
+  textValue: "",
 };
 
 const reducer = (prevState, updatedProperty) => ({

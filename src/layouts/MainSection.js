@@ -9,8 +9,8 @@ const WrapperContent = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 10px;
-  padding-bottom: 20px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 `;
 
 const MainSection = ({ children }) => {
