@@ -32,8 +32,12 @@ const ModalOverlay = styled.a`
 const ModalClose = styled.img`
   float: right !important;
   text-decoration: none !important;
-  cursor: pointer;
-  font-size: 1rem;
+  /* cursor: inherit; */
+  width: 2rem;
+  height: 2rem;
+  position: relative;
+  top: 10px;
+  right: 5px;
 `;
 
 const ModalContainer = styled.div`
@@ -41,7 +45,7 @@ const ModalContainer = styled.div`
   border-radius: 0.1rem;
   display: flex;
   flex-direction: column;
-  height: 90%;
+  height: 80%;
   max-width: 70%;
   padding: 0 0.8rem;
   width: 100%;
@@ -53,7 +57,8 @@ const ModalContainer = styled.div`
 
 const ModalBody = styled.div`
   overflow-y: auto;
-  padding: 30px 10px;
+  height: 80%;
+  padding: 0px 10px;
   position: relative;
 `;
 
@@ -73,7 +78,7 @@ const Button = styled.button`
   padding: 15px 10px;
   border: 2px solid #152ab3;
   border-radius: 10px;
-  cursor: pointer;
+  cursor: initial;
   width: 60%;
   box-shadow: 2px 5px 5px grey;
   direction: rtl;

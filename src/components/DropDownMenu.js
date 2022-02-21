@@ -21,7 +21,7 @@ const DropButton = styled.div`
   text-decoration: none;
   font-size: 20px;
   width: 100%;
-  cursor: pointer;
+  cursor: initial;
   direction: rtl;
 `;
 
@@ -44,7 +44,7 @@ const SubA = styled.a`
   text-decoration: none;
   display: block;
   text-align: center;
-  cursor: pointer;
+  cursor: initial;
   font-size: 18px;
   &:hover {
     background-color: #152ab3;
