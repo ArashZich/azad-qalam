@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import React, { Fragment } from "react";
+import _ from "lodash";
+import { useTranslation } from "react-i18next";
 
 const ModalBlock = styled.div`
   align-items: center;
@@ -74,9 +76,11 @@ const Button = styled.button`
   cursor: pointer;
   width: 60%;
   box-shadow: 2px 5px 5px grey;
+  direction: rtl;
 `;
 
-const Modal = ({ title, children, active, hideModal, showModal }) => {
+const Modal = ({ title, children, active, hideModal, showModal, value }) => {
+  const { t } = useTranslation("Fonts");
   return (
     <Fragment>
       {active && (
@@ -90,7 +94,9 @@ const Modal = ({ title, children, active, hideModal, showModal }) => {
           </ModalContainer>
         </ModalBlock>
       )}
-      <Button onClick={() => showModal()}>{title}</Button>
+      <Button onClick={() => showModal()}>
+        {!_.isEmpty(value) ? `${title}: ${t(value)}` : title}
+      </Button>
     </Fragment>
   );
 };

@@ -18,7 +18,8 @@ import _ from "lodash";
 function Home() {
   const [active, setActive] = useState(false);
   const { states, setContext } = useContext(AppContext);
-  const { listFonts, tagCopy, families, textValue } = states;
+  const { listFonts, tagCopy, families, textValue, fontWeight, fontName } =
+    states;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,6 +39,7 @@ function Home() {
         <Header />
         <MainSection>
           <Modal
+            value={fontName}
             title="انتخاب فونت"
             active={active}
             hideModal={() => setActive(false)}
@@ -48,6 +50,7 @@ function Home() {
               onClick={(item, name) => {
                 setContext("families", item);
                 getFontApi(name);
+                setContext("fontName", name);
                 setActive(false);
               }}
             />
@@ -62,6 +65,7 @@ function Home() {
           <Grid>
             <Slider onSetValue={(value) => setContext("fontSize", value)} />
             <DropDownMenu
+              value={fontWeight}
               title="وزن فونت"
               list={pixelMenu}
               onClick={(item) => setContext("fontWeight", item.value)}
