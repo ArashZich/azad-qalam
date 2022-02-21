@@ -37,7 +37,7 @@ const thumb = css`
   width: ${thumbD};
   height: ${thumbD};
   border-radius: 50%;
-  background: white;
+  background: #152ab3;
   box-shadow: 0px 0px 5px rgba(66, 97, 255, 0.5);
 `;
 
@@ -116,20 +116,39 @@ const Input = styled.input`
   }
 `;
 
-function Slider() {
-  const [value, setValue] = React.useState(50);
+const Content = styled.div`
+  width: 40%;
+`;
+
+const Text = styled.div`
+  font-family: "Vazir";
+  font-size: 20px;
+`;
+
+function Slider(props) {
+  const { onSetValue } = props;
+  const [value, setValue] = React.useState(20);
 
   return (
-    <Input
-      onInput={(e) => setValue(e.target.value)}
-      type="range"
-      style={{
-        width: "30%",
-        "--min": 0,
-        "--max": 100,
-        "--val": value,
-      }}
-    />
+    <Content>
+      <Text>{value}px</Text>
+      <Input
+        value={value}
+        onInput={(e) => {
+          if (e.target.value >= 8 && e.target.value <= 72) {
+            onSetValue(e.target.value);
+          }
+          setValue(e.target.value);
+        }}
+        type="range"
+        style={{
+          width: "100%",
+          "--min": 8,
+          "--max": 100,
+          "--val": value,
+        }}
+      />
+    </Content>
   );
 }
 

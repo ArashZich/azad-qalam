@@ -1,4 +1,4 @@
-import { lorem } from "./Constants";
+import { lorem, pixelMenu } from "./Constants";
 import { theme } from "./Theme";
 
-export { lorem, theme };
+export { lorem, theme, pixelMenu };

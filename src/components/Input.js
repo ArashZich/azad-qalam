@@ -1,27 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-const Input = styled.input`
+const InputStyle = styled.input`
   outline: none;
   border: none;
-  text-transform: capitalize;
-  color: #fff;
-  min-width: 90%;
+  color: black;
   background: none;
+  font-family: "Vazir";
   &::placeholder {
-    color: #828387;
+    color: rgba(0, 0, 0, 0.7);
   }
-  font-size: 24px;
+  font-size: 22px;
+  width: 100%;
+  text-align: right;
+  padding: 0px 10px;
 `;
 
 const SearchInput = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: #2d2e33;
-  padding: 10px 30px;
-  border-radius: 2.5rem;
+  justify-content: center;
+  border: 2px solid #152ab3;
+  border-radius: 10px;
   margin-top: 30px;
   height: 60px;
-  width: 30rem;
+  width: 60%;
+  box-shadow: 2px 5px 5px grey;
 `;
+
+const Input = (props) => {
+  const { value, onChange } = props;
+  return (
+    <SearchInput>
+      <InputStyle
+        placeholder="... یک متن دلخواه بنویسید"
+        onChange={onChange}
+        value={value}
+      />
+    </SearchInput>
+  );
+};
+
+export default Input;

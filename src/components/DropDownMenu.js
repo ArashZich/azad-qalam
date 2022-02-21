@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const StyledUl = styled.ul`
@@ -6,49 +6,35 @@ const StyledUl = styled.ul`
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  border: 2px solid #152ab3;
+  border-radius: 10px;
+  width: 50%;
+  font-family: "Vazir";
+  box-shadow: 2px 5px 5px grey;
 `;
 
-const StyledLi = styled.li`
-  float: left;
-`;
-
-const Dropbtn = styled.div`
+const DropButton = styled.div`
   display: inline-block;
-  color: white;
+  color: black;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 0px;
   text-decoration: none;
+  font-size: 20px;
+  width: 100%;
+  cursor: pointer;
 `;
 
 const DropDownContent = styled.div`
-  display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: white;
+  margin-top: 0.5rem;
+  width: 30%;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-`;
-
-const DropDownLi = styled(StyledLi)`
-  display: inline-block;
-  &:hover {
-    background-color: red;
-  }
-  &:hover ${DropDownContent} {
-    display: block;
-  }
-`;
-
-const StyledA = styled.a`
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  &:hover {
-    background-color: red;
-  }
+  z-index: 11;
+  border-radius: 10px;
+  max-height: 13rem;
+  overflow-y: scroll;
 `;
 
 const SubA = styled.a`
@@ -56,35 +42,39 @@ const SubA = styled.a`
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  text-align: left;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
   &:hover {
-    background-color: #f1f1f1;
+    background-color: #152ab3;
+    color: white;
+    border-radius: 10px;
   }
 `;
 
-class DropDownMenu extends Component {
-  handleClick = (action) => {
-    if (!action) return;
+function DropDownMenu(props) {
+  const [show, onShow] = useState(false);
+  const { title, onClick, list } = props;
 
-    if (this.props.onClick) this.props.onClick(action);
-  };
-
-  render = () => {
-    return (
-      <StyledUl>
-        <DropDownLi>
-          <Dropbtn onClick={() => this.handleClick("DropDown")}>
-            DropDown
-          </Dropbtn>
-          <DropDownContent>
-            {" "}
-            <SubA onClick={() => this.handleClick("Link1")}>Link 1</SubA>
-            <SubA onClick={() => this.handleClick("Link2")}>Link 2</SubA>
-            <SubA onClick={() => this.handleClick("Link3")}>Link 3</SubA>
-          </DropDownContent>
-        </DropDownLi>
-      </StyledUl>
-    );
-  };
+  return (
+    <StyledUl>
+      <DropButton onClick={() => onShow(!show)}>{title}</DropButton>
+      {show ? (
+        <DropDownContent>
+          {list.map((item, index) => (
+            <SubA
+              key={index}
+              onClick={() => {
+                onShow(false);
+                onClick(item);
+              }}
+            >
+              {item.label}
+            </SubA>
+          ))}
+        </DropDownContent>
+      ) : null}
+    </StyledUl>
+  );
 }
 export default DropDownMenu;

@@ -6,6 +6,7 @@ import Modal from "./Modal";
 import GridItem from "./GridItem";
 import Slider from "./Slider";
 import DropDownMenu from "./DropDownMenu";
+import Input from "./Input";
 
 export {
   Text,
@@ -16,4 +17,5 @@ export {
   GridItem,
   Slider,
   DropDownMenu,
+  Input,
 };

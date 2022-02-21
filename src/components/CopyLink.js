@@ -4,19 +4,24 @@ import { useCopyToClipboard } from "../hooks";
 
 const Grid = styled.div`
   display: grid;
+  width: 60%;
+  margin-top: 10px;
 `;
 
 const Row = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 `;
 
 const Col = styled.div`
   flex: ${(props) => props.size};
-  margin: 10px;
   justify-content: center;
   align-items: center;
   display: flex;
+  width: 100%;
+  margin-top: 10px;
 `;
 const Button = styled.button`
   background: transparent;
@@ -28,16 +33,16 @@ const Button = styled.button`
   font-family: "Vazir";
   font-size: 20px;
   box-shadow: 2px 5px 5px grey;
+  margin-top: 10px;
 `;
 
 const Paper = styled.div`
   font-size: 20pt;
-  margin: 10px;
   padding: 15px 10px;
   border: 2px solid #152ab3;
   border-radius: 10px;
   cursor: pointer;
-  width: 60%;
+  width: 100%;
   box-shadow: 2px 5px 5px grey;
 `;
 

@@ -8,15 +8,17 @@ import {
   GridItem,
   Slider,
   DropDownMenu,
+  Input,
 } from "../components";
+import { pixelMenu } from "../config";
 import { getFont, baseUrl } from "../api";
-
+import { Grid } from "../styles";
 import _ from "lodash";
 
 function Home() {
   const [active, setActive] = useState(false);
   const { states, setContext } = useContext(AppContext);
-  const { listFonts, tagCopy, families } = states;
+  const { listFonts, tagCopy, families, textValue } = states;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -56,8 +58,19 @@ function Home() {
               link={`<link rel="stylesheet" type="text/css" href="${tagCopy}" />`}
             />
           )}
-          <Slider />
-          <DropDownMenu />
+
+          <Grid>
+            <Slider onSetValue={(value) => setContext("fontSize", value)} />
+            <DropDownMenu
+              title="وزن فونت"
+              list={pixelMenu}
+              onClick={(item) => setContext("fontWeight", item.value)}
+            />
+          </Grid>
+          <Input
+            onChange={(e) => setContext("textValue", e.target.value)}
+            value={textValue}
+          />
           <Lorem list={families} />
         </MainSection>
         <Footer />
