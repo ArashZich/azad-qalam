@@ -14,6 +14,7 @@ const InputStyle = styled.input`
   width: 100%;
   text-align: right;
   padding: 0px 10px;
+  direction: rtl;
 `;
 
 const SearchInput = styled.div`
@@ -33,7 +34,7 @@ const Input = (props) => {
   return (
     <SearchInput>
       <InputStyle
-        placeholder="... یک متن دلخواه بنویسید"
+        placeholder="یک متن دلخواه بنویسید ..."
         onChange={onChange}
         value={value}
       />

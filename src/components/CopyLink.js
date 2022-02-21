@@ -34,6 +34,7 @@ const Button = styled.button`
   font-size: 20px;
   box-shadow: 2px 5px 5px grey;
   margin-top: 10px;
+  cursor: initial;
 `;
 
 const Paper = styled.div`
@@ -41,7 +42,6 @@ const Paper = styled.div`
   padding: 15px 10px;
   border: 2px solid #152ab3;
   border-radius: 10px;
-  cursor: pointer;
   width: 100%;
   box-shadow: 2px 5px 5px grey;
 `;
