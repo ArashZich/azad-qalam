@@ -22,6 +22,7 @@ const DropButton = styled.div`
   font-size: 20px;
   width: 100%;
   cursor: pointer;
+  direction: rtl;
 `;
 
 const DropDownContent = styled.div`
@@ -54,11 +55,13 @@ const SubA = styled.a`
 
 function DropDownMenu(props) {
   const [show, onShow] = useState(false);
-  const { title, onClick, list } = props;
+  const { title, onClick, list, value } = props;
 
   return (
     <StyledUl>
-      <DropButton onClick={() => onShow(!show)}>{title}</DropButton>
+      <DropButton onClick={() => onShow(!show)}>
+        {title}: {value}
+      </DropButton>
       {show ? (
         <DropDownContent>
           {list.map((item, index) => (

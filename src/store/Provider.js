@@ -11,6 +11,7 @@ const initialState = {
   fontWeight: 400,
   fontSize: 20,
   textValue: "",
+  fontName: "",
 };
 
 const reducer = (prevState, updatedProperty) => ({
