@@ -65,6 +65,7 @@ function Home() {
           <Grid>
             <Slider onSetValue={(value) => setContext("fontSize", value)} />
             <DropDownMenu
+              disabled
               value={fontWeight}
               title="وزن فونت"
               list={pixelMenu}

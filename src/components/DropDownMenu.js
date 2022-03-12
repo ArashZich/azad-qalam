@@ -6,14 +6,13 @@ const StyledUl = styled.ul`
   margin: 0;
   padding: 0;
   overflow: hidden;
-  border: 2px solid #152ab3;
-  border-radius: 10px;
   width: 50%;
+  border-radius: 10px;
   font-family: "Vazir";
   box-shadow: 2px 5px 5px grey;
 `;
 
-const DropButton = styled.div`
+const DropButton = styled.button`
   display: inline-block;
   color: black;
   text-align: center;
@@ -23,6 +22,13 @@ const DropButton = styled.div`
   width: 100%;
   cursor: initial;
   direction: rtl;
+  background-color: white;
+  border: 2px solid #152ab3;
+  border-radius: 10px;
+  :disabled {
+    opacity: 0.4;
+    border: 2px solid grey;
+  }
 `;
 
 const DropDownContent = styled.div`
@@ -55,11 +61,11 @@ const SubA = styled.a`
 
 function DropDownMenu(props) {
   const [show, onShow] = useState(false);
-  const { title, onClick, list, value } = props;
+  const { title, disabled, onClick, list, value } = props;
 
   return (
     <StyledUl>
-      <DropButton onClick={() => onShow(!show)}>
+      <DropButton disabled={disabled} onClick={() => onShow(!show)}>
         {title}: {value}
       </DropButton>
       {show ? (
